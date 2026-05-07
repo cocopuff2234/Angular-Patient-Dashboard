@@ -1,0 +1,39 @@
+.patient-panel {
+  width: min(1100px, calc(100% - 32px));
+  margin: 0 auto 32px;
+  background: #ffffff;
+  border: 1px solid #d8e1e3;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.tabs {
+  display: flex;
+  border-bottom: 1px solid #d8e1e3;
+}
+
+.tabs button {
+  flex: 1;
+  padding: 14px 20px;
+  border: none;
+  background: #f5f7f7;
+  color: #2f555c;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.tabs button.active {
+  background: #2f6f73;
+  color: white;
+}
+
+.patient-placeholder {
+  padding: 24px;
+  color: #5f6f73;
+}
+
+@media (max-width: 600px) {
+  .tabs {
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,17 @@
+<section class="patient-panel">
+    <div class="tabs">
+        <button [class.active]="activeTab === 'today'"
+        (click)="setTab('today')">
+        Today's Patients
+        </button>
+    
+
+    <button
+    [class.active]="activeTab === 'results'"
+        (click)="setTab('results')">
+        Search Results
+        </button>
+    </div>
+    
+    
+</section>
