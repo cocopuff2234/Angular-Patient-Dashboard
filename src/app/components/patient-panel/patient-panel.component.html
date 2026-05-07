@@ -12,6 +12,13 @@
         Search Results
         </button>
     </div>
+
+    <div class="patients">
+    <app-patient-card
+        *ngFor="let patient of patients"
+        [patient]="patient"
+    ></app-patient-card>
+    </div>
     
     
 </section>

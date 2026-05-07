@@ -1,0 +1,28 @@
+<article class="patient-card">
+  <div class="card-header">
+    <div class="identity">
+      <img [src]="patient.avatar" [alt]="patient.name" />
+      <h3>{{ patient.name }}</h3>
+    </div>
+
+    <div class="appointment">
+      <span>Next Appointment</span>
+      <strong>{{ patient.nextAppointment }}</strong>
+    </div>
+  </div>
+
+  <div class="details-grid">
+    <p><strong>DOB:</strong> {{ patient.dob }}</p>
+    <p><strong>Sex:</strong> {{ patient.sex }}</p>
+    <p><strong>Residence:</strong> {{ patient.residence }}</p>
+    <p><strong>MRN:</strong> {{ patient.mrn }}</p>
+    <p><strong>ID:</strong> {{ patient.idNumber }}</p>
+    <p><strong>SSN:</strong> {{ patient.ssnLast4 }}</p>
+    <p><strong>Phone:</strong> {{ patient.phone }}</p>
+    <p><strong>Email:</strong> {{ patient.email }}</p>
+    <p><strong>Hospital:</strong> {{ patient.hospital }}</p>
+    <p><strong>Department:</strong> {{ patient.department }}</p>
+    <p><strong>Physician:</strong> {{ patient.physician }}</p>
+    <p><strong>Conditions:</strong> {{ patient.conditions }}</p>
+  </div>
+</article>
