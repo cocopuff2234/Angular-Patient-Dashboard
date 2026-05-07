@@ -4,6 +4,7 @@
   <app-search (search)="handleSearch($event)"></app-search>
 
   <app-patient-panel
+    #patientPanel
     [patients]="displayedPatients"
   ></app-patient-panel>
 </main>
