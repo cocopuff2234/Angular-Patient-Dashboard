@@ -51,6 +51,25 @@
   font-size: 14px;
 }
 
+.search input {
+  height: 38px;
+  border: 1px solid #cfd8dc;
+  border-radius: 6px;
+  padding: 0 10px;
+  font-size: 14px;
+}
+
+.search select {
+  width: 100%;
+  height: 38px;
+  border: 1px solid #cfd8dc;
+  border-radius: 6px;
+  padding: 0 10px;
+  font-size: 14px;
+  background: white;
+  box-sizing: border-box;
+}
+
 .search-button {
   grid-column: 1 / -1;
   margin-top: 22px;
