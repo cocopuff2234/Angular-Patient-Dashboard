@@ -1,44 +1,51 @@
-<section class ="search">
-    <div class="tabs">
-        <!--Switch tabs between basic and advanced search-->
-        <button
-            [class.active]="activeTab === 'basic'"
-            (click)="setTab('basic')"
-        >
-            Basic
-            </button>
+<section class="search">
+  <div class="tabs">
+    <!--Switch tabs between basic and advanced search-->
+    <button
+      [class.active]="activeTab === 'basic'"
+      (click)="setTab('basic')"
+    >
+      Basic
+    </button>
 
-            <button
-            [class.active]="activeTab === 'advanced'"
-            (click)="setTab('advanced')"
-        >
-            Advanced
-        </button>
-    </div>
-    <!-- Patient details form-->
-    <div class="form-grid">
-        <label>
-            First Name:
-            <input type="text"/>
-        </label>
-        <label>
-            Last Name:
-            <input type="text"/>
-        </label>
-        <label>
-            Date of Birth:
-            <input type="date"/>
-        </label>
-        <label>
-            Start:
-            <input type="date"/>    
-        </label>
-        <label>
-            End:
-            <input type="date"/>    
-        </label>
+    <button
+      [class.active]="activeTab === 'advanced'"
+      (click)="setTab('advanced')"
+    >
+      Advanced
+    </button>
+  </div>
 
-        <!-- Search button -->
-        <button class="search-button">Search</button>
-    </div>
+  <!-- Patient details form-->
+  <div class="form-grid">
+    <label>
+      First Name:
+      <input type="text" [(ngModel)]="criteria.firstName" />
+    </label>
+
+    <label>
+      Last Name:
+      <input type="text" [(ngModel)]="criteria.lastName" />
+    </label>
+
+    <label>
+      Date of Birth:
+      <input type="date" [(ngModel)]="criteria.dob" />
+    </label>
+
+    <label>
+      Start:
+      <input type="date" [(ngModel)]="criteria.startDate" />
+    </label>
+
+    <label>
+      End:
+      <input type="date" [(ngModel)]="criteria.endDate" />
+    </label>
+
+    <!-- Search button -->
+    <button class="search-button" (click)="onSearch()">
+      Search
+    </button>
+  </div>
 </section>

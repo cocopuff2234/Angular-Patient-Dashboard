@@ -52,6 +52,7 @@
 }
 
 .search-button {
+  grid-column: 1 / -1;
   margin-top: 22px;
   background: #2f6f73;
   color: white;

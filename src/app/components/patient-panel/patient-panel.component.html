@@ -12,13 +12,17 @@
         Search Results
         </button>
     </div>
-
-    <div class="patients">
+    
+    <div class="patients" *ngIf="patients.length > 0; else noPatients">
     <app-patient-card
         *ngFor="let patient of patients"
         [patient]="patient"
     ></app-patient-card>
     </div>
+
+    <ng-template #noPatients>
+    <p class="empty-state">No patients found.</p>
+    </ng-template>
     
     
 </section>

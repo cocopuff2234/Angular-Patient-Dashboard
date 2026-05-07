@@ -1,5 +1,9 @@
 <main class="app-page">
   <app-header></app-header>
-  <app-search></app-search>
-  <app-patient-panel></app-patient-panel>
+
+  <app-search (search)="handleSearch($event)"></app-search>
+
+  <app-patient-panel
+    [patients]="displayedPatients"
+  ></app-patient-panel>
 </main>
