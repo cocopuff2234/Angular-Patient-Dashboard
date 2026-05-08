@@ -1,104 +1,134 @@
-.search{
+.search {
   width: min(1100px, calc(100% - 32px));
-  margin: 0 auto 32px;
-  padding: 24px;
+  margin: 0 auto 34px;
   background: #ffffff;
-  border-radius: 14px;
-  border: 1px solid #d8e1e3;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+  border-radius: 6px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
 }
 
 .tabs {
   display: flex;
-  gap: 8px;
-  margin-bottom: 24px;
+  background: #f3f3f3;
 }
 
 .tabs button {
-  border: 1px solid #2f6f73;
-  background: white;
-  color: #2f6f73;
-  padding: 10px 22px;
-  border-radius: 6px;
+  border: none;
+  background: #eeeeee;
+  color: #5f6670;
+  padding: 12px 24px;
+  font-size: 14px;
   cursor: pointer;
 }
 
 .tabs button.active {
-  background: #2f6f73;
-  color: white;
+  background: #ffffff;
+  color: #1f2a33;
+  font-weight: 700;
+}
+
+.search-section {
+  padding: 20px 24px;
+  border-bottom: 1px solid #cfd8dc;
+}
+
+.search-section h3 {
+  margin: 0 0 16px;
+  color: #5f6670;
+  font-size: 15px;
+  font-weight: 400;
 }
 
 .form-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 16px;
+  gap: 14px 18px;
   align-items: end;
+}
+
+.patient-info-grid {
+  grid-template-columns: 260px 260px 150px;
+}
+
+.appointment-grid {
+  grid-template-columns: 150px 150px;
 }
 
 .search label {
   display: flex;
   flex-direction: column;
   gap: 6px;
-  font-size: 14px;
-  color: #2f555c;
+  color: #1f2a33;
+  font-size: 11px;
+  font-weight: 700;
 }
 
-.search input {
-  height: 38px;
-  border: 1px solid #cfd8dc;
-  border-radius: 6px;
-  padding: 0 10px;
-  font-size: 14px;
-}
-
-.search input {
-  height: 38px;
-  border: 1px solid #cfd8dc;
-  border-radius: 6px;
-  padding: 0 10px;
-  font-size: 14px;
-}
-
+.search input,
 .search select {
   width: 100%;
-  height: 38px;
+  height: 34px;
   border: 1px solid #cfd8dc;
   border-radius: 6px;
-  padding: 0 10px;
-  font-size: 14px;
-  background: white;
+  padding: 0 12px;
+  color: #1f2a33;
+  font-size: 12px;
+  background: #ffffff;
   box-sizing: border-box;
 }
 
+.search input::placeholder {
+  color: #aab3b8;
+}
+
+.search-actions {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px 10px 8px;
+  background: #ffffff;
+}
+
 .search-button {
-  grid-column: 1 / -1;
-  margin-top: 22px;
-  background: #2f6f73;
-  color: white;
+  min-width: 128px;
+  height: 38px;
+  background: #668d99;
+  color: #ffffff;
   border: none;
   border-radius: 6px;
-  padding: 11px 32px;
+  font-size: 14px;
+  font-weight: 700;
   cursor: pointer;
-  font-size: 15px;
+}
+
+.search-button:hover {
+  background: #557d89;
 }
 
 @media (max-width: 900px) {
-  .form-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .patient-info-grid,
+  .appointment-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
 @media (max-width: 600px) {
   .search {
+    width: calc(100% - 24px);
+  }
+
+  .tabs button {
+    flex: 1;
+  }
+
+  .search-section {
     padding: 18px;
   }
 
-  .form-grid {
+  .patient-info-grid,
+  .appointment-grid {
     grid-template-columns: 1fr;
   }
 
-  .tabs {
-    flex-direction: column;
+  .search-actions {
+    padding: 14px 18px 18px;
   }
 
   .search-button {

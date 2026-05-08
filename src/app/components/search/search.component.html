@@ -1,7 +1,7 @@
 <section class="search">
   <div class="tabs">
-    <!--Switch tabs between basic and advanced search-->
     <button
+      type="button"
       [class.active]="activeTab === 'basic'"
       (click)="setTab('basic')"
     >
@@ -9,6 +9,7 @@
     </button>
 
     <button
+      type="button"
       [class.active]="activeTab === 'advanced'"
       (click)="setTab('advanced')"
     >
@@ -16,95 +17,108 @@
     </button>
   </div>
 
-  <!-- Patient details form-->
-  <div class="form-grid">
-    <label>
-      First Name:
-      <input type="text" [(ngModel)]="criteria.firstName" />
-    </label>
+  <div class="search-section">
+    <h3>Patient Info</h3>
 
-    <label>
-      Last Name:
-      <input type="text" [(ngModel)]="criteria.lastName" />
-    </label>
+    <div class="form-grid patient-info-grid">
+      <label>
+        First Name
+        <input type="text" [(ngModel)]="criteria.firstName" />
+      </label>
 
-    <label>
-      Date of Birth:
-      <input type="date" [(ngModel)]="criteria.dob" />
-    </label>
+      <label>
+        Last Name
+        <input type="text" [(ngModel)]="criteria.lastName" />
+      </label>
 
-    <label>
-      Start:
-      <input type="date" [(ngModel)]="criteria.startDate" />
-    </label>
+      <label>
+        Date of Birth
+        <input type="date" [(ngModel)]="criteria.dob" />
+      </label>
 
-    <label>
-      End:
-      <input type="date" [(ngModel)]="criteria.endDate" />
-    </label>
+      <label *ngIf="activeTab === 'advanced'">
+        Sex
+        <select [(ngModel)]="criteria.sex">
+          <option value="">Any</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+        </select>
+      </label>
 
-    <!-- Advanced fields -->
-    <label *ngIf="activeTab === 'advanced'">
-      Sex:
-      <select [(ngModel)]="criteria.sex">
-        <option value="">Any</option>
-        <option value="Male">Male</option>
-        <option value="Female">Female</option>
-      </select>
-    </label>
+      <label *ngIf="activeTab === 'advanced'">
+        Residence
+        <input type="text" [(ngModel)]="criteria.residence" />
+      </label>
 
-    <label *ngIf="activeTab === 'advanced'">
-      Residence:
-      <input type="text" [(ngModel)]="criteria.residence" />
-    </label>
+      <label *ngIf="activeTab === 'advanced'">
+        MRN
+        <input type="text" [(ngModel)]="criteria.mrn" />
+      </label>
 
-    <label *ngIf="activeTab === 'advanced'">
-      MRN:
-      <input type="text" [(ngModel)]="criteria.mrn" />
-    </label>
+      <label *ngIf="activeTab === 'advanced'">
+        ID Number
+        <input type="text" [(ngModel)]="criteria.idNumber" />
+      </label>
 
-    <label *ngIf="activeTab === 'advanced'">
-      ID Number:
-      <input type="text" [(ngModel)]="criteria.idNumber" />
-    </label>
+      <label *ngIf="activeTab === 'advanced'">
+        SSN Last 4
+        <input type="text" [(ngModel)]="criteria.ssnLast4" />
+      </label>
 
-    <label *ngIf="activeTab === 'advanced'">
-      SSN Last 4:
-      <input type="text" [(ngModel)]="criteria.ssnLast4" />
-    </label>
+      <label *ngIf="activeTab === 'advanced'">
+        Phone
+        <input type="tel" [(ngModel)]="criteria.phone" />
+      </label>
 
-    <label *ngIf="activeTab === 'advanced'">
-      Phone:
-      <input type="tel" [(ngModel)]="criteria.phone" />
-    </label>
+      <label *ngIf="activeTab === 'advanced'">
+        Email
+        <input type="email" [(ngModel)]="criteria.email" />
+      </label>
 
-    <label *ngIf="activeTab === 'advanced'">
-      Email:
-      <input type="email" [(ngModel)]="criteria.email" />
-    </label>
+      <label *ngIf="activeTab === 'advanced'">
+        Hospital
+        <input type="text" [(ngModel)]="criteria.hospital" />
+      </label>
 
-    <label *ngIf="activeTab === 'advanced'">
-      Hospital:
-      <input type="text" [(ngModel)]="criteria.hospital" />
-    </label>
+      <label *ngIf="activeTab === 'advanced'">
+        Department
+        <input type="text" [(ngModel)]="criteria.department" />
+      </label>
 
-    <label *ngIf="activeTab === 'advanced'">
-      Department:
-      <input type="text" [(ngModel)]="criteria.department" />
-    </label>
+      <label *ngIf="activeTab === 'advanced'">
+        Physician
+        <input type="text" [(ngModel)]="criteria.physician" />
+      </label>
 
-    <label *ngIf="activeTab === 'advanced'">
-      Physician:
-      <input type="text" [(ngModel)]="criteria.physician" />
-    </label>
+      <label *ngIf="activeTab === 'advanced'">
+        Conditions
+        <input type="text" [(ngModel)]="criteria.conditions" />
+      </label>
+    </div>
+  </div>
 
-    <label *ngIf="activeTab === 'advanced'">
-      Conditions:
-      <input type="text" [(ngModel)]="criteria.conditions" />
-    </label>
+  <div class="search-section">
+    <h3>Appointment Range</h3>
 
-    <!-- Search button -->
-    <button class="search-button" (click)="onSearch()">
+    <div class="form-grid appointment-grid">
+      <label>
+        Start Date
+        <input type="date" [(ngModel)]="criteria.startDate" />
+      </label>
+
+      <label>
+        End Date
+        <input type="date" [(ngModel)]="criteria.endDate" />
+      </label>
+    </div>
+  </div>
+
+  <div class="search-actions">
+    <button
+      type="button"
+      class="search-button"
+      (click)="onSearch()"
+    >
       Search
     </button>
   </div>
