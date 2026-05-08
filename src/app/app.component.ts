@@ -97,7 +97,7 @@ export class AppComponent {
     department: 'Department of Cardiology',
     physician: 'Dr. Beth Smith',
     conditions: 'CHF',
-    nextAppointment: 'Today 2:30 pm',
+      nextAppointment: '05/08/2026 2:30 pm',
     avatar: 'https://i.pravatar.cc/100?img=22'
   },
   {
@@ -167,15 +167,79 @@ export class AppComponent {
       const conditionsMatch =
         !criteria.conditions || patient.conditions.toLowerCase().includes(criteria.conditions.toLowerCase());
 
+      const appointmentDate = this.parseAppointmentDate(patient.nextAppointment);
+      const appointmentMatch =
+        (!criteria.startDate && !criteria.endDate) ||
+        this.appointmentMatchesRange(appointmentDate, criteria.startDate, criteria.endDate);
+
       return firstMatch && lastMatch && dobMatch && sexMatch && residenceMatch &&
              mrnMatch && idNumberMatch && ssnMatch && phoneMatch && emailMatch &&
-             hospitalMatch && departmentMatch && physicianMatch && conditionsMatch;
+             hospitalMatch && departmentMatch && physicianMatch && conditionsMatch &&
+             appointmentMatch;
     });
 
     // Switch to search results tab
     if (this.patientPanel) {
       this.patientPanel.setTab('results');
     }
+  }
+
+  private parseAppointmentDate(appointment: string): string | null {
+    const normalized = appointment.trim().toLowerCase();
+    if (normalized.startsWith('today')) {
+      return this.formatDate(new Date().toISOString().slice(0, 10));
+    }
+
+    const match = appointment.match(/^(\d{1,2})\/(\d{1,2})\/(\d{2,4})/);
+    if (!match) {
+      return null;
+    }
+
+    let [, month, day, year] = match;
+    if (year.length === 2) {
+      year = `20${year}`;
+    }
+
+    return `${month.padStart(2, '0')}/${day.padStart(2, '0')}/${year}`;
+  }
+
+  private appointmentMatchesRange(
+    appointmentDate: string | null,
+    startDate: string,
+    endDate: string
+  ): boolean {
+    if (!appointmentDate) {
+      return false;
+    }
+
+    const appointmentIso = this.reformatToIso(appointmentDate);
+    if (!appointmentIso) {
+      return false;
+    }
+
+    if (startDate && appointmentIso < startDate) {
+      return false;
+    }
+
+    if (endDate && appointmentIso > endDate) {
+      return false;
+    }
+
+    return true;
+  }
+
+  private reformatToIso(date: string): string | null {
+    const parts = date.split('/');
+    if (parts.length !== 3) {
+      return null;
+    }
+
+    let [month, day, year] = parts;
+    if (year.length === 2) {
+      year = `20${year}`;
+    }
+
+    return `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`;
   }
 
   formatDate(date: string): string {

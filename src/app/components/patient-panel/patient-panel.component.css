@@ -5,18 +5,18 @@
 
 .tabs {
   display: flex;
-  gap: 22px;
-  margin-bottom: 14px;
+  gap: 20px;
+  margin-bottom: 12px;
 }
 
 .tabs button {
   border: none;
   background: transparent;
-  color: #5f6670;
   font-size: 18px;
   font-weight: 700;
+  color: #5f6670;
   cursor: pointer;
-  padding: 0 0 8px;
+  padding-bottom: 6px;
 }
 
 .tabs button.active {
@@ -31,25 +31,6 @@
 }
 
 .empty-state {
-  background: white;
-  border: 6px solid #1495ee;
-  padding: 32px;
-  color: #5f6670;
+  padding: 30px;
   font-size: 16px;
-}
-
-@media (max-width: 600px) {
-  .tabs {
-    gap: 14px;
-    flex-wrap: wrap;
-  }
-
-  .tabs button {
-    font-size: 15px;
-  }
-
-  .patients,
-  .empty-state {
-    border-width: 4px;
-  }
 }
